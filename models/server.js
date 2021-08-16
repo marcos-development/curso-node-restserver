@@ -34,7 +34,7 @@ class Server {
         this.app.use( express.json() );
 
         // Directorio Público
-        this.app.use( express.static(path.join(__dirname, 'build')) );
+        this.app.use( express.static(path.join(__dirname, 'public')) );
     }
 
     routes() {

@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('../database/config');
+const path = require('path');
 
 
 class Server {
 
     constructor() {
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 5000;
         this.usuariosAPI = '/api/usuarios';
 
         // Conectar a base de datos
@@ -33,7 +34,7 @@ class Server {
         this.app.use( express.json() );
 
         // Directorio Público
-        this.app.use( express.static('public') );
+        this.app.use( express.static(path.join(__dirname, 'build')) );
     }
 
     routes() {
